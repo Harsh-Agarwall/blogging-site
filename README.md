@@ -12,6 +12,7 @@ A full-stack Markdown-powered blog platform built with:
 Users can create, edit, and display blog posts using clean, GitHub-style Markdown.
 
 ---
+Live on: https://blogging-site-beryl-one.vercel.app/
 
 ## 🚀 Features
 
