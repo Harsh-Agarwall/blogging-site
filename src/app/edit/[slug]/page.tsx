@@ -3,6 +3,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import PostForm from "@/components/PostForm";
+import Image from "next/image";
 
 type Post = {
   _id: string;
@@ -61,7 +62,11 @@ export default function EditPage() {
     router.push("/");
   }
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return (
+    <div className="flex justify-center items-center py-20">
+      <Image src="/hourglass.gif" alt="Loading..." className="w-12 h-12 animate-pulse" />
+    </div>
+  );
   if (error) return <div className="text-red-500">{error}</div>;
   if (!post) return null;
 
