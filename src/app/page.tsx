@@ -3,8 +3,16 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+type Post = {
+  _id?: string;
+  slug: string;
+  title: string;
+  content?: string;
+  createdAt?: string;
+};
+
 export default function Dashboard() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     fetch("/api/posts")
@@ -23,10 +31,12 @@ export default function Dashboard() {
         </Link>
       </div>
       {posts.length === 0 ? (
-        <div className="text-center text-gray-500 py-16">No posts yet. Click "New Post" to create your first blog post!</div>
+        <div className="text-center text-gray-500 py-16">
+          No posts yet. Click &quot;New Post&quot; to create your first blog post!
+        </div>
       ) : (
         <ul className="space-y-6">
-          {posts.map((post: any) => (
+          {posts.map((post) => (
             <li key={post.slug} className="border rounded-lg p-6 shadow-sm hover:shadow-md transition bg-white">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-semibold">{post.title}</h2>

@@ -3,10 +3,15 @@
 import PostForm from "@/components/PostForm";
 import { useRouter } from "next/navigation";
 
+type PostInput = {
+  title: string;
+  content: string;
+};
+
 export default function CreatePage() {
   const router = useRouter();
 
-  async function handleSubmit({ title, content }: any) {
+  async function handleSubmit({ title, content }: PostInput) {
     const res = await fetch("/api/posts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

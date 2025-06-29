@@ -7,12 +7,17 @@ import 'react-markdown-editor-lite/lib/index.css';
 
 const mdParser = new MarkdownIt();
 
-export default function MarkdownEditor({ content, onChange }: any) {
+type MarkdownEditorProps = {
+  content: string;
+  onChange: (value: string) => void;
+};
+
+export default function MarkdownEditor({ content, onChange }: MarkdownEditorProps) {
   const [value, setValue] = useState(content || '');
 
   useEffect(() => {
     onChange(value);
-  }, [value]);
+  }, [value, onChange]);
 
   return (
     <MdEditor
