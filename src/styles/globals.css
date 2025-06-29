@@ -1,0 +1,127 @@
+@import "tailwindcss";
+.w-md-editor-toolbar {
+    padding: 10px !important;
+}
+.custom-richtext {
+  color: #171717;
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 65ch;
+  /* margin: 2rem auto; */
+  font-family: var(--font-work-sans), 'Work Sans', sans-serif;
+  background: none;
+}
+
+.custom-richtext h1,
+.custom-richtext h2,
+.custom-richtext h3,
+.custom-richtext h4 {
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  line-height: 1.2;
+}
+
+.custom-richtext h1 { font-size: 2.25rem; }
+.custom-richtext h2 { font-size: 1.5rem; }
+.custom-richtext h3 { font-size: 1.25rem; }
+.custom-richtext h4 { font-size: 1.125rem; }
+
+.custom-richtext p {
+  margin-bottom: 1.25em;
+}
+
+.custom-richtext ul,
+.custom-richtext ol {
+  margin-left: 2em;
+  margin-bottom: 1.25em;
+  padding-left: 1.5em;
+}
+
+.custom-richtext ul {
+  list-style-type: disc;
+}
+.custom-richtext ol {
+  list-style-type: decimal;
+}
+
+.custom-richtext li {
+  margin-bottom: 0.5em;
+}
+
+.custom-richtext blockquote {
+  border-left: 4px solid #FBE843;
+  padding-left: 1em;
+  color: #555;
+  font-style: italic;
+  margin: 1.5em 0;
+  background: #fffbe8;
+}
+
+.custom-richtext pre {
+  background: #18181b;           /* dark background */
+  color: #fbe843;                /* yellowish text for contrast */
+  border-radius: 0.5rem;
+  padding: 1em 1.5em;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  box-shadow: 0 2px 8px 0 #0001;
+}
+
+.custom-richtext code {
+  background: #f3f3f3;
+  color: #d6336c;
+  border-radius: 0.375rem;
+  padding: 0.2em 0.4em;
+  font-size: 0.95em;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+}
+
+/* Make inline code inside pre inherit the pre's color/background */
+.custom-richtext pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+  border-radius: 0;
+}
+
+/* Optional: highlight code keywords, comments, etc. if you use a syntax highlighter */
+.custom-richtext code .token.comment,
+.custom-richtext code .token.prolog,
+.custom-richtext code .token.doctype,
+.custom-richtext code .token.cdata {
+  color: #6b7280; /* gray-500 */
+}
+
+.custom-richtext code .token.punctuation {
+  color: #fbe843; /* yellow */
+}
+
+.custom-richtext code .token.property,
+.custom-richtext code .token.tag,
+.custom-richtext code .token.boolean,
+.custom-richtext code .token.number,
+.custom-richtext code .token.constant,
+.custom-richtext code .token.symbol,
+.custom-richtext code .token.deleted {
+  color: #f87171; /* red-400 */
+}
+
+.custom-richtext code .token.selector,
+.custom-richtext code .token.attr-name,
+.custom-richtext code .token.string,
+.custom-richtext code .token.char,
+.custom-richtext code .token.builtin,
+.custom-richtext code .token.inserted {
+  color: #4ade80; /* green-400 */
+}
+
+.custom-richtext code .token.operator,
+.custom-richtext code .token.entity,
+.custom-richtext code .token.url,
+.custom-richtext code .token.variable {
+  color: #38bdf8; /* sky-400 */
+}
