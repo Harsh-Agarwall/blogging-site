@@ -2,18 +2,26 @@
 
 import { useState } from 'react';
 import MarkdownEditor from './MarkDownEditor';
-import { useRouter } from 'next/navigation';
 
-export default function PostForm({ onSubmit, initialData = {} }: any) {
-  const router = useRouter();
+
+type PostData = {
+  _id?: string;
+  slug?: string;
+  title?: string;
+  content?: string;
+};
+
+type PostFormProps = {
+  onSubmit: (data: { title: string; content: string }) => void;
+  onDelete?: (slug: string) => void;
+  initialData?: PostData;
+};
+
+export default function PostForm({ onSubmit, onDelete, initialData = {} }: PostFormProps) {
+
   const [title, setTitle] = useState(initialData.title || '');
   const [content, setContent] = useState(initialData.content || '');
-async function onDelete(slug:string) {
-      if(!window.confirm("Are you sure you want to delete this post?")) return;
-      await fetch(`/api/posts/${slug}`,{method:"DELETE"});
-      alert("Post deleted successfully");
-   router.push ('/');
-}
+
   return (
     <div className="space-y-4 max-w-2xl mx-auto p-4">
       <input
@@ -29,15 +37,15 @@ async function onDelete(slug:string) {
       >
         {initialData._id ? 'Update Post' : 'Create Post'}
       </button>
-        {initialData._id &&(
-<button
-            type="button"
-            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-            onClick={() => onDelete && onDelete(initialData.slug)}
-          >
-            Delete
-          </button>
-        )}
+      {initialData._id && initialData.slug && onDelete && (
+        <button
+          type="button"
+          className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+          onClick={() => onDelete(initialData.slug!)}
+        >
+          Delete
+        </button>
+      )}
     </div>
   );
 }

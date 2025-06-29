@@ -49,9 +49,27 @@ export default function EditPage() {
     router.push(`/blog/${data.slug}`);
   }
 
+  async function handleDelete(slugToDelete: string) {
+    setError(null);
+    const res = await fetch(`/api/posts/${slugToDelete}`, {
+      method: "DELETE",
+    });
+    if (!res.ok) {
+      setError("Failed to delete post.");
+      return;
+    }
+    router.push("/");
+  }
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div className="text-red-500">{error}</div>;
   if (!post) return null;
 
-  return <PostForm onSubmit={handleSubmit} initialData={post} />;
+  return (
+    <PostForm
+      onSubmit={handleSubmit}
+      onDelete={handleDelete}
+      initialData={post}
+    />
+  );
 }
